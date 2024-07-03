@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2 } from "lucide-react";
+import { CircleUser, Menu, Search, DollarSign } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -19,6 +19,7 @@ const Layout = () => {
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between">
         <DesktopNav />
         <MobileNav />
+        <SearchBar />
         <UserMenu />
       </header>
       <main className="flex-grow p-4 overflow-auto">
@@ -34,8 +35,8 @@ const DesktopNav = () => (
       to="/"
       className="flex items-center gap-2 text-lg font-semibold md:text-base"
     >
-      <Package2 className="h-6 w-6" />
-      <span className="sr-only">Acme Inc</span>
+      <DollarSign className="h-6 w-6" />
+      <span>Financial Times</span>
     </NavItem>
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
@@ -59,8 +60,8 @@ const MobileNav = () => (
           to="/"
           className="flex items-center gap-2 text-lg font-semibold"
         >
-          <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <DollarSign className="h-6 w-6" />
+          <span>Financial Times</span>
         </NavItem>
         {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
@@ -70,6 +71,20 @@ const MobileNav = () => (
       </nav>
     </SheetContent>
   </Sheet>
+);
+
+const SearchBar = () => (
+  <div className="relative flex items-center">
+    <input
+      type="text"
+      placeholder="Search"
+      className="border rounded-full px-4 py-2"
+    />
+    <Button variant="outline" size="icon" className="absolute right-2">
+      <Search className="h-5 w-5" />
+      <span className="sr-only">Search</span>
+    </Button>
+  </div>
 );
 
 const UserMenu = () => (
